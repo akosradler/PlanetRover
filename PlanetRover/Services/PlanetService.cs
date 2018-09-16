@@ -7,13 +7,18 @@ namespace PlanetRover.Services
 {
     public class PlanetService : IPlanetService
     {
-        protected PlanetService()
+        public PlanetService()
         {
         }
 
         public virtual async Task<int[,]> GetPlanetLayout()
         {
             return await Task.FromResult(new int[,] { { 0, 0 }, { 0, 0 } });
+        }
+
+        public virtual async Task<bool> IsValidTile(int latitude, int longitude)
+        {
+            throw new NotImplementedException();
         }
     }
 }
