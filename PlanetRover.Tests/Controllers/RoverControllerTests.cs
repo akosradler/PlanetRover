@@ -30,5 +30,23 @@ namespace PlanetRover.Tests.Controllers
             //Assert
             Assert.IsType<OkObjectResult>(response.Result);
         }
+
+        [Fact]
+        public async Task Move_ReturnsOK_WhenPosted()
+        {
+            //Arrange
+            var roverServiceMock = new Mock<RoverService>();
+            var planetServiceMock = new Mock<PlanetService>();
+            roverServiceMock.Setup(service => service.MoveSequence("F")).Returns(Task.FromResult(true));
+            roverServiceMock.Setup(service => service.Position).Returns(new Tuple<int, int>(0, 0));
+            roverServiceMock.Setup(service => service.Compass).Returns(Models.Compass.N);
+            var roverController = new RoverController(planetServiceMock.Object, roverServiceMock.Object);
+
+            //Act
+            var response = await roverController.Move(new MoveRequestDto { Path = "F" });
+
+            //Assert
+            Assert.IsType<OkObjectResult>(response.Result);
+        }
     }
 }

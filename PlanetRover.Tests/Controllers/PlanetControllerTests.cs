@@ -2,9 +2,6 @@
 using Moq;
 using PlanetRover.Controllers;
 using PlanetRover.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -26,5 +23,7 @@ namespace PlanetRover.Tests.Controllers
             //Assert
             Assert.IsType<OkObjectResult>(response.Result);
         }
+
+  
     }
 }
