@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetRover", "PlanetRover\PlanetRover.csproj", "{76409EE8-9BF2-4D13-B6E0-4B9222446032}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanetRover.Tests", "PlanetRover.Tests\PlanetRover.Tests.csproj", "{F2CC39D2-88CC-4736-83B7-3C4BADC9BC00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76409EE8-9BF2-4D13-B6E0-4B9222446032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76409EE8-9BF2-4D13-B6E0-4B9222446032}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76409EE8-9BF2-4D13-B6E0-4B9222446032}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76409EE8-9BF2-4D13-B6E0-4B9222446032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2CC39D2-88CC-4736-83B7-3C4BADC9BC00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2CC39D2-88CC-4736-83B7-3C4BADC9BC00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2CC39D2-88CC-4736-83B7-3C4BADC9BC00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2CC39D2-88CC-4736-83B7-3C4BADC9BC00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7BD83540-5002-4A70-A755-501EDFE98B94}
+	EndGlobalSection
+EndGlobal
