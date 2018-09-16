@@ -1,4 +1,4 @@
-﻿namespace PlanetRover.Services
+﻿namespace PlanetRover.Services.Interfaces
 {
     public interface IPlanetSurfaceService
     {
