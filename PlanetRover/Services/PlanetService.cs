@@ -23,7 +23,12 @@ namespace PlanetRover.Services
 
         public virtual async Task<int[,]> GetPlanetLayout()
         {
-            return await Task.FromResult(new int[,] { { 0, 0 }, { 0, 0 } });
+            return await Task.FromResult(_planet.Value.PlanetLayout);
+        }
+
+        public virtual async Task<int> GetPlanetSize()
+        {
+            return await Task.FromResult(_planet.Value.PlanetSize);
         }
 
         public virtual async Task<bool> IsValidTile(int latitude, int longitude)
