@@ -35,7 +35,69 @@ namespace PlanetRover.Services
 
         public virtual async Task<bool> MoveSequence(string path)
         {
-            throw new NotImplementedException();
+            foreach (var direction in path)
+            {
+                switch (direction)
+                {
+                    case 'F':
+                        if (!await Move(NextTile(_rover.Position, _rover.Compass)))
+                        {
+                            _logger.LogTrace($"Rover failed to move. Position: {_rover.Position.Item1},{_rover.Position.Item2} Direction: {_rover.Compass.ToString()}");
+                            return false;
+                        }
+                        _logger.LogTrace($"Rover moved. Position: {_rover.Position.Item1},{_rover.Position.Item2} Direction: {_rover.Compass.ToString()}");
+                        break;
+                    case 'B':
+                        if (!await Move(NextTile(_rover.Position, _rover.Compass.Invert())))
+                        {
+                            _logger.LogTrace($"Rover failed to move. Position: {_rover.Position.Item1},{_rover.Position.Item2} Direction: {_rover.Compass.ToString()}");
+                            return false;
+                        }
+                        _logger.LogTrace($"Rover moved. Position: {_rover.Position.Item1},{_rover.Position.Item2} Direction: {_rover.Compass.ToString()}");
+                        break;
+                    case 'L':
+                        _rover.Compass = _rover.Compass.TurnLeft();
+                        _logger.LogTrace($"Rover turned left. Position: {_rover.Position.Item1},{_rover.Position.Item2} Direction: {_rover.Compass.ToString()}");
+                        break;
+                    case 'R':
+                        _rover.Compass = _rover.Compass.TurnRight();
+                        _logger.LogTrace($"Rover turned right. Position: {_rover.Position.Item1},{_rover.Position.Item2} Direction: {_rover.Compass.ToString()}");
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            return true;
+        }
+
+        private async Task<bool> Move(Tuple<int, int> nextTile)
+        {
+            if (await _planetService.IsValidTile(nextTile.Item1, nextTile.Item2))
+            {
+                _rover.Position = nextTile;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private Tuple<int, int> NextTile(Tuple<int, int> currentTile, Compass compass)
+        {
+            switch (compass)
+            {
+                case Compass.N:
+                    return new Tuple<int, int>(currentTile.Item1, currentTile.Item2 - 1);
+                case Compass.E:
+                    return new Tuple<int, int>(currentTile.Item1 + 1, currentTile.Item2);
+                case Compass.S:
+                    return new Tuple<int, int>(currentTile.Item1, currentTile.Item2 + 1);
+                case Compass.W:
+                    return new Tuple<int, int>(currentTile.Item1 - 1, currentTile.Item2);
+                default:
+                    return currentTile;
+            }
         }
     }
 }
