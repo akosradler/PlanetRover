@@ -1,4 +1,5 @@
-﻿using PlanetRover.Services;
+﻿using Moq;
+using PlanetRover.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,9 @@ namespace PlanetRover.Tests.Services
         public async Task IsValidTile_ReturnsFalse_OutsideOfBonds()
         {
             //Arrange
-            var planetService = new PlanetService();
+            var planetSurfaceServiceMock = new Mock<PlanetSurfaceService>();
+            planetSurfaceServiceMock.Setup(service => service.GetPlanetLayout()).Returns(() => new int[1, 1] { { 0 } });
+            var planetService = new PlanetService(planetSurfaceServiceMock.Object);
 
             //Act
             //Assert
@@ -24,7 +27,9 @@ namespace PlanetRover.Tests.Services
         public async Task IsValidTile_ReturnsFalse_OnObstacle()
         {
             //Arrange
-            var planetService = new PlanetService();
+            var planetSurfaceServiceMock = new Mock<PlanetSurfaceService>();
+            planetSurfaceServiceMock.Setup(service => service.GetPlanetLayout()).Returns(() => new int[1, 1] { { 1 } });
+            var planetService = new PlanetService(planetSurfaceServiceMock.Object);
 
             //Act
             //Assert
@@ -35,7 +40,9 @@ namespace PlanetRover.Tests.Services
         public async Task IsValidTile_ReturnsTrue_LandingOnValidTile()
         {
             //Arrange
-            var planetService = new PlanetService();
+            var planetSurfaceServiceMock = new Mock<PlanetSurfaceService>();
+            planetSurfaceServiceMock.Setup(service => service.GetPlanetLayout()).Returns(() => new int[1, 1] { { 0 } });
+            var planetService = new PlanetService(planetSurfaceServiceMock.Object);
 
             //Act
             //Assert
