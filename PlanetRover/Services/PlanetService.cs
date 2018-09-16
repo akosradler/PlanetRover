@@ -32,7 +32,7 @@ namespace PlanetRover.Services
 
         public virtual async Task<bool> IsValidTile(int latitude, int longitude)
         {
-            var outOfBounds = latitude < 0 || longitude < 0 || latitude >= _planet.Value.PlanetSize - 1 || longitude >= _planet.Value.PlanetSize - 1;
+            var outOfBounds = latitude < 0 || longitude < 0 || latitude >= _planet.Value.PlanetSize || longitude >= _planet.Value.PlanetSize;
             var isValid = !outOfBounds && _planet.Value.PlanetLayout[latitude, longitude] == (int)Surface.Empty;
             return await Task.FromResult(isValid);
         }

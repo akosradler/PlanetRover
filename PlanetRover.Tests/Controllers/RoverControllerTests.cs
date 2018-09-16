@@ -18,6 +18,8 @@ namespace PlanetRover.Tests.Controllers
         {
             //Arrange
             var roverServiceMock = new Mock<RoverService>();
+            roverServiceMock.Setup(service => service.Position).Returns(new Tuple<int, int>(0, 0));
+            roverServiceMock.Setup(service => service.Compass).Returns(Models.Compass.N);
             var planetServiceMock = new Mock<PlanetService>();
             planetServiceMock.Setup(service => service.IsValidTile(0, 0)).Returns(Task.FromResult(true));
             var roverController = new RoverController(planetServiceMock.Object, roverServiceMock.Object);
