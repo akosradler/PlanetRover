@@ -14,7 +14,9 @@ namespace PlanetRover.Tests.Controllers
         public async Task Get_ReturnsOK_WhenRequested()
         {
             //Arrange
-            var planetController = new PlanetController();
+            var planetServiceMock = new Mock<PlanetService>();
+            planetServiceMock.Setup(service => service.GetPlanetLayout()).Returns(Task.FromResult(new int[1, 1]));
+            var planetController = new PlanetController(planetServiceMock.Object);
 
             //Act
             var response = await planetController.Get();

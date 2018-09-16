@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlanetRover.DTOs
+namespace PlanetRover.Services
 {
-    public class PlanetResponseDto
+    public interface IPlanetService
     {
-        public int[,] PlanetSurface { get; set; }
+        Task<int[,]> GetPlanetLayout();
     }
 }
