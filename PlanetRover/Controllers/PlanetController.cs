@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PlanetRover.DTOs;
 using System.Threading.Tasks;
 
 namespace PlanetRover.Controllers
@@ -9,10 +10,9 @@ namespace PlanetRover.Controllers
     {
 
         [HttpGet]
-        [Route("/")]
-        public async Task<ActionResult> Get()
+        public async Task<ActionResult<PlanetResponseDto>> Get()
         {
-            return Ok();
+            return Ok(new PlanetResponseDto());
         }
     }
 }

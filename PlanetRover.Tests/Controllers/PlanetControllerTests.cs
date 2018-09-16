@@ -20,7 +20,7 @@ namespace PlanetRover.Tests.Controllers
             var response = await planetController.Get();
 
             //Assert
-            Assert.IsType<OkObjectResult>(response);
+            Assert.IsType<OkObjectResult>(response.Result);
         }
     }
 }
